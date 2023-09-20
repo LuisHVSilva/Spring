@@ -1,12 +1,21 @@
 package br.com.luis.httpMethod.data.vo.v1;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import java.util.Objects;
 
+@JsonPropertyOrder({"id", "firstName", "lastName", "address", "gender"})
 public class PersonVO {
+    @JsonProperty("id")
     private Long id;
+    @JsonProperty("firstName")
     private String firstName;
+    @JsonProperty("lastName")
     private String lastName;
+    @JsonProperty("address")
     private String address;
+    @JsonProperty("gender")
     private String gender;
 
     public PersonVO() {}
