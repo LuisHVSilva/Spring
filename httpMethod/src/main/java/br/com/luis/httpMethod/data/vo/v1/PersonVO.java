@@ -2,13 +2,16 @@ package br.com.luis.httpMethod.data.vo.v1;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.github.dozermapper.core.Mapping;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.util.Objects;
 
 @JsonPropertyOrder({"id", "firstName", "lastName", "address", "gender"})
-public class PersonVO {
+public class PersonVO extends RepresentationModel<PersonVO> {
     @JsonProperty("id")
-    private Long id;
+    @Mapping("id")
+    private Long key;
     @JsonProperty("firstName")
     private String firstName;
     @JsonProperty("lastName")
@@ -18,15 +21,17 @@ public class PersonVO {
     @JsonProperty("gender")
     private String gender;
 
-    public PersonVO() {}
-
-    //#region Getter and Setters
-    public Long getId() {
-        return id;
+    public PersonVO() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    //#region Getter and Setters
+
+    public Long getKey() {
+        return key;
+    }
+
+    public void setKey(Long key) {
+        this.key = key;
     }
 
     public String getFirstName() {
@@ -67,7 +72,7 @@ public class PersonVO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PersonVO personVO = (PersonVO) o;
-        return Objects.equals(id, personVO.id) &&
+        return Objects.equals(key, personVO.key) &&
                 Objects.equals(firstName, personVO.firstName) &&
                 Objects.equals(lastName, personVO.lastName) &&
                 Objects.equals(address, personVO.address) &&
@@ -76,6 +81,6 @@ public class PersonVO {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, address, gender);
+        return Objects.hash(key, firstName, lastName, address, gender);
     }
 }

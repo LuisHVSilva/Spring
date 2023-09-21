@@ -1,4 +1,4 @@
-package br.com.luis.httpMethod.services;
+package br.com.luis.httpMethod.mapper.mocks;
 
 import br.com.luis.httpMethod.data.vo.v1.PersonVO;
 import br.com.luis.httpMethod.model.Person;
@@ -45,7 +45,7 @@ public class MockPerson {
 
     public PersonVO mockVO(Integer number) {
         PersonVO person = new PersonVO();
-        person.setId(number.longValue());
+        person.setKey(number.longValue());
         person.setFirstName("First Name Test" + number);
         person.setLastName("Last Name Test" + number);
         person.setAddress("Address Test" + number);
